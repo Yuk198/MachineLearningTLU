@@ -25,7 +25,7 @@ except:
     print("ValueError!")
 
 #-----Derivative-----
-#Using Gradient Desent
+#Using Gradient Descent
 def grad(x):
     return 2*x+ 5*np.cos(x)
 
