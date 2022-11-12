@@ -29,16 +29,9 @@ except:
 def grad(x):
     return 2*x+ 5*np.cos(x)
 
-def GD(eta, x0):
-    x = [x0]
-    for it in range(100):
-        x_new = x[-1] - eta*grad(x[-1])
-        if abs(grad(x_new)) < 1e-3:
-            break
-        x.append(x_new)
-    return (x, it)
+def GD(eta, x):
+    while abs(grad(x)) > eta:
+        x = x - grad(x) * 0.1
+    return  x
 
-(x1, it1) = GD(.1, -10)
-(x2, it2) = GD(.1, 10)
-print('Solution x1 = %f, obtained after %d iterations'%(x1[-1],  it1))
-print('Solution x2 = %f, obtained after %d iterations'%(x2[-1],  it2))
+print('Solution x1 = %f'%GD(0.00001, -10))
